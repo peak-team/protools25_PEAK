@@ -91,6 +91,18 @@ export PEAK_OVERHEAD_RATIO=<value_corresponding_to_Table5>
 LD_PRELOAD=/path/to/libpeak.so ../test/paper/test_table5
 ```
 
+**Note:**
+For this experiment, you need to modify the source code in src/general_listener.c. Specifically, comment out the original implementation of the function peak_general_overhead_bootstrapping and replace it with:
+
+```
+static void peak_general_overhead_bootstrapping()
+{
+    peak_general_overhead = 0.00001;
+}
+```
+
+The reason is that the current peak_general_overhead_bootstrapping logic does not account for the increased pause and unpause times in multi-threaded scenarios. To make the experimental trend more clear and consistent, we set a fixed estimated value of 0.00001 for peak_general_overhead.
+
 ## Experiment 6: Reproducing Table 6
 
 **Configuration:**
@@ -108,6 +120,18 @@ export PEAK_OVERHEAD_RATIO=<value_corresponding_to_Table6>
 LD_PRELOAD=/path/to/libpeak.so ../test/paper/test_table6
 ```
 
+**Note:**
+For this experiment, you need to modify the source code in src/general_listener.c. Specifically, comment out the original implementation of the function peak_general_overhead_bootstrapping and replace it with:
+
+```
+static void peak_general_overhead_bootstrapping()
+{
+    peak_general_overhead = 0.00003;
+}
+```
+
+The reason is that the current peak_general_overhead_bootstrapping logic does not account for the increased pause and unpause times in multi-threaded scenarios. To make the experimental trend more clear and consistent, we set a fixed estimated value of 0.00003 for peak_general_overhead.
+
 ## Experiment 7: Reproducing Table 7
 
 **Configuration:**
@@ -124,6 +148,18 @@ export PEAK_OVERHEAD_RATIO=<value_corresponding_to_Table7>
 ```shell
 LD_PRELOAD=/path/to/libpeak.so ../test/paper/test_table7
 ```
+
+**Note:**
+For this experiment, you need to modify the source code in src/general_listener.c. Specifically, comment out the original implementation of the function peak_general_overhead_bootstrapping and replace it with:
+
+```
+static void peak_general_overhead_bootstrapping()
+{
+    peak_general_overhead = 0.00003;
+}
+```
+
+The reason is that the current peak_general_overhead_bootstrapping logic does not account for the increased pause and unpause times in multi-threaded scenarios. To make the experimental trend more clear and consistent, we set a fixed estimated value of 0.00003 for peak_general_overhead.
 
 ## Experiment 8: Reproducing Table 8
 
